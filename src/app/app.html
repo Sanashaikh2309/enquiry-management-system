@@ -1,0 +1,98 @@
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+
+    <div class="navbar-left">
+      <a routerLink="/home" class="navbar-logo">Enquiry System</a>
+
+      <ul class="navbar-menu">
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+        <li><a routerLink="/submit-enquiry">Submit Enquiry</a></li>
+        <li><a routerLink="/enquiry-list">Enquiries</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <!-- Not Logged In -->
+      <div class="auth-section login-section" *ngIf="!isLoggedIn()">
+        <button class="login-btn" (click)="showLoginModal()">Login</button>
+        <button class="register-btn" routerLink="/register">Register</button>
+      </div>
+
+      <!-- Logged In -->
+      <div class="auth-section logout-section" *ngIf="isLoggedIn()">
+        <span class="username" (click)="openUserDetailsModal()">
+          Welcome {{ userData()?.name || 'User' }}
+        </span>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- User Details Modal -->
+<div class="modal-overlay" *ngIf="showUserDetailsModal()" (click)="closeUserDetailsModal()">
+  <div class="user-details-modal" (click)="$event.stopPropagation()">
+
+    <div class="modal-header">
+      <h2>User Profile</h2>
+      <button class="close-btn" (click)="closeUserDetailsModal()">&times;</button>
+    </div>
+
+    <div class="modal-body" *ngIf="userData()">
+      <div class="user-card">
+
+        <div class="user-avatar">
+          <span>
+            {{ (userData()?.name || userData()?.email)?.charAt(0).toUpperCase() }}
+          </span>
+        </div>
+
+        <div class="user-info">
+          <div class="info-row">
+            <label>Name:</label>
+            <span>{{ userData()?.name || 'N/A' }}</span>
+          </div>
+
+          <div class="info-row">
+            <label>Email:</label>
+            <span>{{ userData()?.email || 'N/A' }}</span>
+          </div>
+
+          <div class="info-row">
+            <label>Role:</label>
+            <span class="role-badge">{{ userData()?.role || 'User' }}</span>
+          </div>
+
+          <div class="info-row" *ngIf="userData()?.phone">
+            <label>Phone:</label>
+            <span>{{ userData()?.phone }}</span>
+          </div>
+
+          <div class="info-row" *ngIf="userData()?.address">
+            <label>Address:</label>
+            <span>{{ userData()?.address }}</span>
+          </div>
+
+          <div class="info-row" *ngIf="userData()?.createdAt">
+            <label>Member Since:</label>
+            <span>{{ userData()?.createdAt | date:'MMM dd, yyyy' }}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-close" (click)="closeUserDetailsModal()">Close</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

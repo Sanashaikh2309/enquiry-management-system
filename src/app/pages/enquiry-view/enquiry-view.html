@@ -1,0 +1,60 @@
+<div class="container-wrapper" *ngIf="enquiry">
+  <!-- Single Enquiry Card -->
+  <div class="enquiry-card">
+
+    <!-- Header -->
+    <div class="card-header-custom">
+      <div>
+        <div class="status-badge status-new" style="margin-top: 8px;">
+          {{ enquiry.statusId }} <!-- Optional: map statusId → statusName later -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body-custom">
+
+      <!-- Customer Info -->
+      <div class="customer-info">
+        <div class="customer-name">
+          <i class="bi bi-person-circle"></i>
+          {{ enquiry.customerName }}
+        </div>
+      </div>
+
+      <!-- Contact Details -->
+      <div class="contact-details">
+        <div class="contact-item">
+          <i class="bi bi-telephone"></i>
+          <span>{{ enquiry.customerPhone }}</span>
+        </div>
+      </div>
+
+      <!-- Enquiry Details -->
+      <div class="enquiry-details">
+        <div class="enquiry-type">{{ enquiry.enquiryType }}</div>
+        <div class="feedback-text">{{ enquiry.feedback }}</div>
+        <div class="message-text">{{enquiry.message}}</div>
+      </div>
+
+      <!-- Dates -->
+      <div class="dates-row">
+        <div class="date-item">
+          <span class="date-label">Enquiry Date</span>
+          <span class="date-value">{{ enquiry.enquiryDate | date: 'dd-MM-yyyy' }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="card-footer-custom">
+
+      <!-- Converted Checkbox -->
+      <label>
+        <input type="checkbox" [checked]="enquiry.isConverted" (change)="toggleConverted(enquiry)">
+        Converted
+      </label>
+    </div>
+  </div>
+</div>

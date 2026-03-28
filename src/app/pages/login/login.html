@@ -1,0 +1,128 @@
+<div class="login-container">
+  <!-- Email/Password Login -->
+  <form class="login-card" (ngSubmit)="onLogin()" *ngIf="loginMethod() === 'email'">
+    <h2 class="card-title">Welcome Back</h2>
+    <p class="card-subtitle">Login to your account</p>
+
+    <div class="form-group">
+      <label for="loginEmail">Email Address</label>
+      <input
+        id="loginEmail"
+        type="email"
+        name="email"
+        [(ngModel)]="loginObj.email"
+        placeholder="Enter your email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <input
+        id="loginPassword"
+        type="password"
+        name="password"
+        [(ngModel)]="loginObj.password"
+        placeholder="Enter your password"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn-primary" [disabled]="loginLoading()">
+      {{ loginLoading() ? 'Logging in...' : 'Login' }}
+    </button>
+
+    <div class="login-separator">OR</div>
+
+    <button type="button" class="btn-secondary" (click)="switchToOTP()">
+      Login with OTP
+    </button>
+  </form>
+
+  <!-- OTP Login -->
+  <div class="login-card otp-card" *ngIf="loginMethod() === 'otp'">
+    <h2 class="card-title">Login with OTP</h2>
+    <p class="card-subtitle">Enter your email and verify with OTP</p>
+
+    <!-- Error Message -->
+    <div class="alert alert-error" *ngIf="otpError()">
+      {{ otpError() }}
+    </div>
+
+    <!-- Success Message -->
+    <div class="alert alert-success" *ngIf="otpSuccess()">
+      {{ otpSuccess() }}
+    </div>
+
+    <!-- Email Section -->
+    <div *ngIf="!otpSent()">
+      <div class="form-group">
+        <label for="otpEmail">Email Address</label>
+        <input
+          id="otpEmail"
+          type="email"
+          name="otpEmail"
+          [(ngModel)]="otpEmail"
+          placeholder="Enter your email address"
+          [disabled]="otpLoading()"
+        />
+      </div>
+
+      <button 
+        type="button" 
+        class="btn-primary btn-block"
+        (click)="sendOTP()"
+        [disabled]="otpLoading() || !otpEmail().includes('@')"
+      >
+        {{ otpLoading() ? 'Sending OTP...' : 'Send OTP' }}
+      </button>
+    </div>
+
+    <!-- OTP Verification Section -->
+    <div *ngIf="otpSent()">
+      <div class="otp-status">
+        <div class="status-circle">✓</div>
+        <p>OTP sent to <strong>{{ otpEmail() }}</strong></p>
+      </div>
+
+      <div class="form-group">
+        <label for="otp">Enter OTP</label>
+        <input
+          id="otp"
+          type="text"
+          name="otp"
+          [(ngModel)]="otp"
+          placeholder="Enter 6-digit OTP"
+          maxlength="6"
+          pattern="[0-9]{6}"
+          class="otp-input"
+          [disabled]="verifyLoading()"
+        />
+      </div>
+
+      <button 
+        type="button" 
+        class="btn-primary btn-block"
+        (click)="verifyOTP()"
+        [disabled]="verifyLoading() || otp().length !== 6"
+      >
+        {{ verifyLoading() ? 'Verifying...' : 'Verify OTP & Login' }}
+      </button>
+
+      <button 
+        type="button" 
+        class="btn-link"
+        (click)="sendOTP()"
+        [disabled]="otpLoading()"
+      >
+        {{ otpLoading() ? 'Resending...' : 'Resend OTP' }}
+      </button>
+    </div>
+
+    <div class="login-separator">OR</div>
+
+    <button type="button" class="btn-secondary" (click)="switchToEmail()">
+      Login with Email
+    </button>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="container-fluid my-5 parent">
+    <div class="card form-card p-4">
+
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <div class="logo">
+                <i class="bi bi-chat-dots-fill"></i>
+            </div>
+            <h3 class="mt-2">Enquiry Management Form</h3>
+            <p class="text-muted">Capture and manage customer enquiries efficiently</p>
+        </div>
+
+        <form>
+
+            <!-- Customer Information -->
+            <div class="mb-4">
+                <h5 class="section-title">
+                    <i class="bi bi-person-circle"></i> Customer Information
+                </h5>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Customer Name</label>
+                        <input type="text" [(ngModel)]="newEnquiryObj.customerName" class="form-control"
+                            placeholder="Enter full name" id="customerName" name="customerName">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" [(ngModel)]="newEnquiryObj.customerEmail" class="form-control"
+                            placeholder="Enter email" id="customerEmail" name="customerEmail">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" [(ngModel)]="newEnquiryObj.customerPhone" class="form-control"
+                            placeholder="Enter phone number" id="customerPhone" name="customerPhone">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enquiry Details -->
+            <div class="mb-4">
+                <h5 class="section-title">
+                    <i class="bi bi-info-circle-fill"></i> Enquiry Details
+                </h5>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Category</label>
+                        <select [(ngModel)]="newEnquiryObj.categoryId" class="form-select" id="categoryId"
+                            name="categoryId">
+
+                            <option value="0" disabled>Select Category</option>
+
+                            <option *ngFor="let item of $categoryList|async" [ngValue]="item.categoryId">
+                                {{ item.categoryName }}
+                            </option>
+
+                        </select>
+                    </div>
+
+                    @if(newEnquiryObj.enquiryId == 0){
+                    <div class="col-md-4">
+                        <label class="form-label">Status</label>
+                        <select [(ngModel)]="newEnquiryObj.statusId" class="form-select" id="statusId" name="statusId">
+
+                            <option value="0" disabled>Select Status</option>
+
+                            <option *ngFor="let item of $statusList|async" [ngValue]="item.statusId">
+
+                                {{ item.statusName }}
+                            </option>
+                        </select>
+                    </div>
+
+                    }
+
+                    <div class="col-md-4">
+                        <label class="form-label">Enquiry Type</label>
+                        <input type="text" [(ngModel)]="newEnquiryObj.enquiryType" class="form-control"
+                            placeholder="Enter enquiry type" id="enquiryType" name="enquiryType">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Message</label>
+                        <textarea [(ngModel)]="newEnquiryObj.message" class="form-control" rows="3"
+                            placeholder="Enter enquiry message" id="message" name="message"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="mb-4">
+                <h5 class="section-title">
+                    <i class="bi bi-chat-left-text-fill"></i> Feedback
+                </h5>
+
+                <textarea [(ngModel)]="newEnquiryObj.feedback" class="form-control" rows="3"
+                    placeholder="Enter feedback or notes" id="feedback" name="feedback"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary submit-btn px-5 py-2" (click)="onSaveEnquiry()">
+                    <i class="bi bi-send-fill"></i> Submit Enquiry
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

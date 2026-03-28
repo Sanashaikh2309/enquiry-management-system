@@ -1,0 +1,47 @@
+<div class="parent" *ngIf="editForm">
+  <div class="enquiry-grid">
+    <div class="enquiry-card">
+
+      <div class="card-header-custom">
+        <span class="status-badge status-new">
+          Edit Enquiry
+        </span>
+      </div>
+
+      <form [formGroup]="editForm" class="card-body-custom">
+
+        <label>Customer Name</label>
+        <input type="text" formControlName="customerName" />
+
+        <label>Phone</label>
+        <input type="text" formControlName="customerPhone" />
+
+        <label>Enquiry Type</label>
+        <input type="text" formControlName="enquiryType" />
+
+        <label>Feedback</label>
+        <textarea rows="4" formControlName="feedback"></textarea>
+
+        <label>Status ID</label>
+        <input type="number" formControlName="statusId" />
+
+        <label>
+          <input type="checkbox" formControlName="isConverted" />
+          Converted
+        </label>
+
+      </form>
+
+      <div class="card-footer-custom">
+        <button class="btn-action btn-edit" (click)="saveChanges()">
+          Save
+        </button>
+
+        <button class="btn-action btn-view" (click)="deleteEnquiry()">
+          Delete
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<!-- ADMIN -->
+<ng-container *ngIf="role === 'ADMIN' && adminData">
+
+  <h2 class="title">Admin Dashboard</h2>
+
+  <div class="cards">
+    <div class="card blue">
+      Total Enquiries
+      <span>{{ adminData.total }}</span>
+    </div>
+
+    <div class="card orange">
+      New
+      <span>{{ adminData['new'] }}</span>
+    </div>
+
+    <div class="card green">
+      Converted
+      <span>{{ adminData.converted }}</span>
+    </div>
+
+    <div class="card purple">
+      Users
+      <span>{{ adminData.users }}</span>
+    </div>
+  </div>
+
+  <h3>Recent Enquiries</h3>
+
+  <table *ngIf="adminData.recent?.length">
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Date</th>
+    </tr>
+
+    <tr *ngFor="let e of adminData.recent">
+      <td>{{ e.customerName }}</td>
+      <td>{{ e.customerPhone }}</td>
+      <td>{{ e.enquiryDate | date:'dd-MM-yyyy' }}</td>
+    </tr>
+  </table>
+
+</ng-container>
+
+
+<!-- USER -->
+<ng-container *ngIf="role === 'USER' && userData">
+
+  <h2 class="title">My Dashboard</h2>
+
+  <div class="cards">
+    <div class="card blue">
+      My Enquiries
+      <span>{{ userData.total || 0 }}</span>
+    </div>
+
+    <div class="card orange">
+      Pending
+      <span>{{ userData.pending || 0 }}</span>
+    </div>
+
+    <div class="card green">
+      Converted
+      <span>{{ userData.converted || 0 }}</span>
+    </div>
+  </div>
+
+  <h3>My Enquiries</h3>
+
+  <table *ngIf="userData?.recent?.length > 0">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Date</th>
+    </tr>
+
+    <tr *ngFor="let e of userData.recent">
+      <td>{{ e.enquiryId }}</td>
+      <td>{{ e.customerName }}</td>
+      <td>{{ e.customerPhone }}</td>
+      <td>{{ e.enquiryDate | date:'dd-MM-yyyy' }}</td>
+    </tr>
+  </table>
+
+  <p *ngIf="userData?.recent?.length === 0">
+    No enquiries found.
+  </p>
+
+</ng-container>

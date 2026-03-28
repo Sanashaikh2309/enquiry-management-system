@@ -1,0 +1,117 @@
+/* Page Background */
+.parent {
+    background-color: #ffffff; /* white page background */
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center; /* center the card horizontally */
+    align-items: flex-start; /* start from top */
+}
+
+/* Grid / Centering */
+.enquiry-grid {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Card */
+.enquiry-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 420px;        /* slightly narrower */
+    max-width: 90%;      /* responsive on small screens */
+    padding-bottom: 1rem; /* reduces overall height slightly */
+}
+
+.enquiry-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.card-header-custom {
+    background-color: #f43f5e; /* red header */
+    padding: 1rem 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    background-color: #dc2626; /* red badge */
+    color: #ffffff;
+}
+
+/* Body / Form */
+.card-body-custom {
+    padding: 1rem 1.5rem; /* slightly less padding to reduce height */
+}
+
+.card-body-custom label {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.9rem;
+}
+
+.card-body-custom input,
+.card-body-custom textarea {
+    width: 100%;
+    padding: 0.45rem 0.75rem; /* slightly smaller for compactness */
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-body-custom input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+/* Footer */
+.card-footer-custom {
+    border-top: 1px solid #e5e7eb;
+    padding: 0.75rem 1.5rem; /* slightly smaller padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Action Buttons */
+.btn-action {
+    border: none;
+    border-radius: 10px;
+    padding: 0.45rem 0.9rem; /* slightly smaller buttons */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-view {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.btn-edit {
+    background-color: #b91c1c;
+    color: #ffffff;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

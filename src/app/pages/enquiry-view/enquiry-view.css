@@ -1,0 +1,198 @@
+.parent {
+    background: linear-gradient(135deg, #f43f5e 0%, #b91c1c 100%);
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Grid */
+.enquiry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Card */
+.enquiry-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 50%;
+    justify-self: center; 
+    margin-top: 5%;
+    
+    
+}
+
+.enquiry-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.card-header-custom {
+    background: linear-gradient(135deg, #f43f5e 0%, #b91c1c 100%);
+    padding: 1.25rem 1.5rem;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.status-new {
+    background-color: #dc2626; /* red */
+    color: #ffffff;
+}
+
+/* Body */
+.card-body-custom {
+    padding: 1.5rem;
+}
+
+/* Customer Info */
+.customer-info {
+    margin-bottom: 1rem;
+}
+
+.customer-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Contact Details */
+.contact-details {
+    margin-bottom: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #475569;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Enquiry Details */
+.enquiry-details {
+    margin-top: 1rem;
+}
+
+.enquiry-type {
+    font-weight: 600;
+    color: #ef4444; /* red */
+    margin-bottom: 0.25rem;
+}
+
+.enquiry-message {
+    background-color: #f8fafc;
+    border-left: 4px solid #ef4444; /* red */
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+/* Feedback */
+.feedback-section {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: #334155;
+}
+
+.feedback-text {
+    font-size: 0.9rem;
+}
+
+/* Dates */
+.dates-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+    gap: 1rem;
+}
+
+.date-item {
+    background-color: #f1f5f9;
+    padding: 0.75rem;
+    border-radius: 10px;
+    flex: 1;
+}
+
+.date-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.date-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+/* Footer */
+.card-footer-custom {
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Conversion Indicator */
+.conversion-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.conversion-no {
+    color: #ef4444; /* red */
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-action {
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-view {
+    background-color: #ef4444; /* red */
+    color: #ffffff;
+}
+
+.btn-edit {
+    background-color: #b91c1c; /* dark red */
+    color: #ffffff;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

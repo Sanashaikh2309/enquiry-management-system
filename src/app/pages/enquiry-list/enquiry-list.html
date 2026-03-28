@@ -1,0 +1,82 @@
+<div class="container-wrapper">
+  <div class="page-header">
+    <h1>Enquiry Management </h1> <p>View and manage all customer enquiries</p>
+  </div>
+
+  <div class="enquiry-grid">
+    <!-- Enquiry Card -->
+    <div class="enquiry-card" *ngFor="let item of enquiryList; let i = index">
+
+      <!-- Header -->
+      <div class="card-header-custom">
+
+        <div>
+          <div class="status-badge status-new" style="margin-top: 8px;">
+            {{ item.statusId }} <!-- Optional: map statusId → statusName later -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="card-body-custom">
+
+        <!-- Customer Info -->
+        <div class="customer-info">
+          <div class="customer-name">
+            <i class="bi bi-person-circle"></i>
+            {{ item.customerName }}
+          </div>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="bi bi-telephone"></i>
+            <span>{{ item.customerPhone }}</span>
+          </div>
+        </div>
+
+        <!-- Enquiry Details -->
+        <div class="enquiry-details">
+          <div class="enquiry-type">{{ item.enquiryType }}</div>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback-section">
+          <i class="bi bi-chat-left-text"></i>
+          <div class="feedback-text">{{ item.feedback }}</div>
+        </div>
+
+        <!-- Dates -->
+        <div class="dates-row">
+          <div class="date-item">
+            <span class="date-label">Enquiry Date</span>
+            <span class="date-value">{{ item.enquiryDate | date: 'dd-MM-yyyy' }}</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer-custom">
+
+        <!-- Converted Checkbox -->
+        <label>
+          <input type="checkbox" [checked]="item.isConverted" (change)="toggleConverted(item)">
+          Converted
+        </label>
+
+        <div class="action-buttons">
+          <button (click)="view(item.enquiryId)">
+            <i class="bi bi-eye"></i>
+          </button>
+
+          <button (click)="edit(item.enquiryId)">
+            <i class="bi bi-pencil"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
